@@ -32,7 +32,6 @@ export class CreateArticleComponent implements OnInit {
       return;
     }
     let postData: Article = this.formGroup.value;
-    console.log("efe", postData);
     postData.username = this.credentialService.credentials.username;
     this.mockApi.addArticle(postData);
     this.formGroup.reset();
