@@ -8,6 +8,10 @@ import { HeaderComponent } from './base-layout/header/header.component';
 import { FooterComponent } from './base-layout/footer/footer.component';
 import { ArticleSummaryComponent } from './article-summary/article-summary.component';
 import { ArticlesComponent } from './articles/articles.component';
+import { LoginComponent } from './login/login.component';
+import { SharedModule } from './shared-modules/shared.module';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -17,10 +21,14 @@ import { ArticlesComponent } from './articles/articles.component';
     FooterComponent,
     ArticleSummaryComponent,
     ArticlesComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    BrowserAnimationsModule,
+    AppRoutingModule,
+    SharedModule,
+    ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
