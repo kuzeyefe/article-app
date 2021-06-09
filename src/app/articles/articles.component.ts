@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { ArticleMockApiService } from '../services/mock-api/article-mock-api.service';
+import { AuthenticationService } from '../services/authentication.service';
 
 @Component({
   selector: 'app-articles',
@@ -7,9 +10,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ArticlesComponent implements OnInit {
 
-  constructor() { }
+  articles:Observable<any>;
+  isAuthenticated:boolean = false;
+
+  constructor(private mockApi:ArticleMockApiService, private authenticationService:AuthenticationService) { }
+
 
   ngOnInit(): void {
+    this.articles = this.mockApi.articles;
+    this.isAuthenticated = this.authenticationService.isAuthenticated;
   }
 
 }

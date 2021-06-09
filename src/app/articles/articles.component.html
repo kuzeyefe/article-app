@@ -1,5 +1,15 @@
-<div class="columns is-variable is-multiline">
-    <div class="column is-4 mb-3" *ngFor="let i of [1,2,3,4,5]">
-        <app-article-summary></app-article-summary>
+<div *ngIf="(articles | async)?.length > 0; else emptyTemplate" class="columns is-variable is-multiline">
+    <div class="column is-4 mb-3" *ngFor="let articleItem of articles | async">
+        <app-article-summary [article]="articleItem"></app-article-summary>
     </div>
 </div>
+
+<ng-template #emptyTemplate>
+        <div class="message is-link">
+            <div class="message-body">
+              <span>
+                  Article not found! You can add new articles by clicking 'New Article' link.
+              </span>
+            </div>
+        </div>
+</ng-template>
