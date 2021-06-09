@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { ArticlesComponent } from './articles/articles.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
+import { AuthenticationGuard } from './services/guards/authentication.guard';
 
 
 const routes: Routes = [
@@ -17,6 +18,11 @@ const routes: Routes = [
       {
         path: '',
         component: ArticlesComponent
+      },
+      {
+        path: 'create-article',
+        canActivate: [AuthenticationGuard],
+        loadChildren: () => import('./modules/create-article/create-article.module').then(m => m.CreateArticleModule)
       }
     ]
   },
